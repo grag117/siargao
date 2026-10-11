@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Feel and Discover Siargao — island tours, lagoon escapes, surf experiences, and tropical adventures in Siargao, Philippines.">
+  <title>Feel and Discover Siargao | Feel the Island. Discover the Paradise.</title>
+  <style>
+    :root {
+      --ocean: #075b63;
+      --deep: #073c46;
+      --aqua: #bfe9df;
+      --sand: #fff8e9;
+      --coral: #f28c68;
+      --ink: #183b40;
+      --muted: #5c7475;
+      --white: #fff;
+      --shadow: 0 18px 50px rgba(7,60,70,.13);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: #fffdf8; line-height: 1.6; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .container { width: min(1140px, calc(100% - 40px)); margin-inline: auto; }
+    .topline { background: var(--deep); color: #eaf8f3; text-align: center; padding: 7px 15px; font-size: .83rem; letter-spacing: .04em; }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(255,253,248,.95); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(7,91,99,.1); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 850; color: var(--deep); line-height: 1.05; }
+    .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50% 50% 48% 12%; transform: rotate(-8deg); background: var(--aqua); color: var(--ocean); font-size: 1.35rem; }
+    .brand-name { font-size: .98rem; letter-spacing: -.025em; }
+    .brand-name small { display: block; margin-top: 5px; font-size: .65rem; font-weight: 700; color: var(--muted); letter-spacing: .16em; text-transform: uppercase; }
+    .navlinks { display: flex; align-items: center; gap: 24px; font-size: .91rem; font-weight: 650; }
+    .navlinks a:hover { color: var(--coral); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 13px 21px; font-weight: 800; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(7,60,70,.15); }
+    .btn-primary { color: white; background: var(--ocean); }
+    .btn-primary:hover { background: var(--deep); }
+    .btn-coral { background: var(--coral); color: #3e2520; }
+    .btn-outline { border: 1px solid rgba(7,91,99,.3); background: white; color: var(--ocean); }
+    .menu-toggle { display: none; background: transparent; border: 0; font-size: 1.7rem; color: var(--deep); }
+    .hero { position: relative; min-height: 650px; display: grid; align-items: center; overflow: hidden; background: var(--deep); color: white; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,39,47,.82) 0%, rgba(3,39,47,.55) 47%, rgba(3,39,47,.12) 100%), url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=2000&q=85") center/cover; transform: scale(1.01); }
+    .hero-content { position: relative; z-index: 1; padding: 82px 0 95px; max-width: 720px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: .17em; font-size: .76rem; font-weight: 850; color: var(--aqua); }
+    h1 { font-size: clamp(3.1rem, 7vw, 6.4rem); line-height: .98; letter-spacing: -.065em; margin: 19px 0 22px; }
+    h1 em { color: #bce9dc; font-style: normal; }
+    .hero p { max-width: 570px; font-size: clamp(1.02rem, 2vw, 1.2rem); color: rgba(255,255,255,.9); margin: 0 0 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero .btn-outline { background: rgba(255,255,255,.12); color: white; border-color: rgba(255,255,255,.55); }
+    .hero-note { margin-top: 30px; display: flex; align-items: center; gap: 12px; color: #f2fffa; font-size: .9rem; }
+    .avatar-dots { display: flex; }
+    .avatar-dots span { display: grid; place-items: center; width: 29px; height: 29px; margin-left: -6px; border: 2px solid white; border-radius: 50%; background: var(--coral); color: var(--deep); font-size: .7rem; font-weight: 900; }
+    .avatar-dots span:first-child { margin-left: 0; background: var(--aqua); }
+    .quickfacts { position: relative; z-index: 2; margin-top: -42px; }
+    .facts-grid { display: grid; grid-template-columns: repeat(3,1fr); background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 25px; }
+    .fact { display: flex; align-items: center; justify-content: center; gap: 13px; padding: 8px 15px; }
+    .fact + .fact { border-left: 1px solid #e6efeb; }
+    .fact-icon { font-size: 1.6rem; }
+    .fact strong { display: block; font-size: 1rem; }
+    .fact small { color: var(--muted); }
+    section { padding: 92px 0; }
+    .section-head { max-width: 700px; margin-bottom: 36px; }
+    .kicker { color: var(--ocean); font-weight: 850; text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; }
+    h2 { font-size: clamp(2.1rem, 4.4vw, 3.55rem); letter-spacing: -.05em; line-height: 1.08; margin: 10px 0 14px; color: var(--deep); }
+    .section-head p, .muted { color: var(--muted); }
+    .destinations { display: grid; grid-template-columns: 1.15fr .85fr .85fr; gap: 18px; }
+    .destination { position: relative; min-height: 330px; overflow: hidden; border-radius: var(--radius); background: #d7e8df; color: white; box-shadow: var(--shadow); }
+    .destination img { position: absolute; inset: 0; height: 100%; transition: transform .45s; }
+    .destination:hover img { transform: scale(1.06); }
+    .destination::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4,43,49,.88), transparent 72%); }
+    .destination-copy { position: absolute; z-index: 1; bottom: 22px; left: 22px; right: 22px; }
+    .destination-copy h3 { margin: 0 0 4px; font-size: 1.45rem; }
+    .destination-copy p { margin: 0; font-size: .9rem; color: rgba(255,255,255,.85); }
+    .tag { display: inline-block; border-radius: 99px; padding: 5px 10px; background: rgba(255,255,255,.18); backdrop-filter: blur(8px); font-size: .73rem; font-weight: 800; margin-bottom: 9px; }
+    .packages-section { background: var(--sand); }
+    .package-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .package-card { overflow: hidden; border-radius: var(--radius); background: white; box-shadow: 0 8px 30px rgba(7,60,70,.07); display: flex; flex-direction: column; }
+    .package-card img { height: 220px; }
+    .package-body { padding: 23px; display: flex; flex-direction: column; flex: 1; }
+    .package-meta { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .8rem; font-weight: 700; }
+    .package-body h3 { font-size: 1.3rem; color: var(--deep); margin: 12px 0 7px; }
+    .package-body p { color: var(--muted); font-size: .93rem; margin: 0 0 15px; }
+    .package-body ul { padding-left: 19px; margin: 0 0 21px; font-size: .88rem; color: #385b5d; }
+    .price-row { display: flex; align-items: baseline; gap: 5px; margin-top: auto; margin-bottom: 15px; }
+    .price { font-size: 1.75rem; font-weight: 900; color: var(--ocean); letter-spacing: -.04em; }
+    .price-row small { color: var(--muted); }
+    .package-body .btn { width: 100%; }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 55px; }
+    .about-photo { position: relative; }
+    .about-photo img { height: 520px; border-radius: 45% 45% 22px 22px; }
+    .photo-stamp { position: absolute; right: -18px; bottom: 25px; width: 145px; height: 145px; border-radius: 50%; display: grid; place-items: center; text-align: center; padding: 15px; background: var(--coral); color: var(--deep); font-weight: 900; line-height: 1.2; transform: rotate(8deg); }
+    .about-copy p { color: var(--muted); }
+    .values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 25px; }
+    .value { padding: 16px; border: 1px solid #e0ece6; border-radius: 15px; }
+    .value b { display: block; margin: 5px 0; color: var(--deep); }
+    .value span { font-size: .86rem; color: var(--muted); }
+    .booking-section { background: var(--deep); color: white; }
+    .booking-section h2 { color: white; }
+    .booking-section .section-head p { color: #c3ddda; }
+    .booking-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+    .booking-points { list-style: none; padding: 0; margin: 25px 0; }
+    .booking-points li { display: flex; gap: 12px; margin: 15px 0; color: #e0f0eb; }
+    .booking-points span { color: var(--aqua); }
+    .booking-form { padding: 30px; background: white; border-radius: var(--radius); color: var(--ink); box-shadow: 0 22px 55px rgba(0,0,0,.18); }
+    .booking-form h3 { margin: 0 0 5px; font-size: 1.5rem; color: var(--deep); }
+    .booking-form > p { margin: 0 0 22px; color: var(--muted); font-size: .9rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: .84rem; font-weight: 800; color: #315659; }
+    input, select, textarea { width: 100%; border: 1px solid #d5e3dd; border-radius: 11px; padding: 12px 13px; outline: none; color: var(--ink); background: #fffefa; }
+    input:focus, select:focus, textarea:focus { border-color: var(--ocean); box-shadow: 0 0 0 3px rgba(7,91,99,.1); }
+    textarea { min-height: 90px; resize: vertical; }
+    .form-note { font-size: .78rem; color: var(--muted); margin: 12px 0 0; }
+    .form-status { display: none; margin-top: 15px; border-radius: 12px; background: #e7f7ee; color: #185d42; padding: 13px; font-size: .9rem; }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 35px; }
+    .contact-cards { display: grid; gap: 14px; margin-top: 25px; }
+    .contact-card { display: flex; gap: 14px; padding: 17px; border: 1px solid #e0ece6; border-radius: 15px; }
+    .contact-card .emoji { font-size: 1.35rem; }
+    .contact-card b { display: block; color: var(--deep); }
+    .contact-card span, .contact-card a { color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
+    .map-panel { overflow: hidden; border-radius: var(--radius); background: #e5f2e9; min-height: 380px; }
+    .map-panel iframe { border: 0; width: 100%; height: 380px; }
+    .faq { background: #f2f8f3; }
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 45px; }
+    details { background: white; border: 1px solid #e0ece6; border-radius: 13px; padding: 17px 19px; margin-bottom: 12px; }
+    summary { cursor: pointer; font-weight: 800; color: var(--deep); }
+    details p { color: var(--muted); margin-bottom: 0; }
+    footer { padding: 38px 0; background: #042f37; color: #e4f2ee; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 25px; flex-wrap: wrap; }
+    footer .brand { color: white; }
+    footer .brand-name small { color: #b3d3cd; }
+    footer p { color: #b3d3cd; font-size: .85rem; margin: 8px 0 0; }
+    .socials { display: flex; gap: 10px; flex-wrap: wrap; }
+    .socials a { border: 1px solid rgba(255,255,255,.25); border-radius: 99px; padding: 8px 13px; font-size: .85rem; }
+    .socials a:hover { background: rgba(255,255,255,.12); }
+    .copyright { border-top: 1px solid rgba(255,255,255,.15); margin-top: 27px; padding-top: 20px; color: #9fc4bd; font-size: .8rem; }
+    .backtop { position: fixed; right: 18px; bottom: 18px; z-index: 30; width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--coral); color: var(--deep); font-size: 1.2rem; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); }
+    @media (max-width: 850px) {
+      .navlinks { display: none; position: absolute; top: 76px; left: 0; right: 0; background: #fffdf8; padding: 20px; flex-direction: column; align-items: stretch; gap: 14px; border-bottom: 1px solid #dceae4; }
+      .navlinks.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav > .btn { display: none; }
+      .destinations { grid-template-columns: 1fr 1fr; }
+      .destination:first-child { grid-column: 1 / -1; }
+      .package-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid, .booking-grid, .contact-grid, .faq-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 570px; }
+      .about-photo img { height: 430px; }
+      .booking-grid { gap: 25px; }
+      .faq-grid { gap: 5px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1140px); }
+      .topline { font-size: .72rem; }
+      .hero { min-height: 610px; }
+      .hero-content { padding: 68px 0 80px; }
+      .facts-grid { grid-template-columns: 1fr; padding: 14px; }
+      .fact { justify-content: flex-start; padding: 12px; }
+      .fact + .fact { border-left: 0; border-top: 1px solid #e6efeb; }
+      section { padding: 68px 0; }
+      .destinations, .package-grid, .values, .form-grid { grid-template-columns: 1fr; }
+      .destination:first-child { grid-column: auto; }
+      .destination { min-height: 300px; }
+      .package-card img { height: 210px; }
+      .about-photo img { height: 350px; }
+      .photo-stamp { width: 115px; height: 115px; right: -5px; font-size: .85rem; }
+      .booking-form { padding: 21px; }
+      .field.full { grid-column: auto; }
+      .map-panel iframe { height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">YOUR ISLAND STORY STARTS HERE · SIARGAO, PHILIPPINES</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Feel and Discover Siargao home">
+        <span class="brand-mark">☼</span>
+        <span class="brand-name">FEEL & DISCOVER<small>SIARGAO ISLAND</small></span>
+      </a>
+      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#about">About Us</a><a href="#packages">Tours & Packages</a><a href="#booking">Book Now</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#booking">Plan Your Trip ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">✦ Discover the island life</span>
+          <h1>Feel the Island.<br><em>Discover</em> Paradise.</h1>
+          <p>From turquoise lagoons to sun-kissed shores, let Siargao surprise you. Find your next adventure, meet the island spirit, and make memories that stay with you.</p>
+          <div class="hero-actions">
+            <a class="btn btn-coral" href="#packages">Explore Our Tours <span>→</span></a>
+            <a class="btn btn-outline" href="#about">Our Story</a>
+          </div>
+          <div class="hero-note">
+            <div class="avatar-dots"><span>☼</span><span>✦</span><span>↗</span></div>
+            <span>Island adventures, thoughtful journeys, lasting memories.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container quickfacts" aria-label="Our travel highlights">
+      <div class="facts-grid">
+        <div class="fact"><span class="fact-icon">🏝️</span><div><strong>Island Adventures</strong><small>Explore hidden gems</small></div></div>
+        <div class="fact"><span class="fact-icon">🌿</span><div><strong>Travel Thoughtfully</strong><small>Respect nature & culture</small></div></div>
+        <div class="fact"><span class="fact-icon">☀️</span><div><strong>Made for Memories</strong><small>Your island story awaits</small></div></div>
+      </div>
+    </div>
+
+    <section id="destinations">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">The island is calling</span>
+          <h2>Little places.<br>Big memories.</h2>
+          <p>Discover the iconic sights and beautiful natural spaces that make Siargao special. Every stop is a chance to slow down and feel the island.</p>
+        </div>
+        <div class="destinations">
+          <article class="destination">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=85" alt="Clear tropical blue ocean and waves">
+            <div class="destination-copy"><span class="tag">Island favorite</span><h3>Island Hopping</h3><p>White sand, clear water, and sunshine-filled days.</p></div>
+          </article>
+          <article class="destination">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=85" alt="Tropical beach with palm trees">
+            <div class="destination-copy"><span class="tag">Slow moments</span><h3>Coastal Escapes</h3><p>Unwind by the sea and enjoy island time.</p></div>
+          </article>
+          <article class="destination">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=800&q=85" alt="Surfer enjoying ocean waves">
+            <div class="destination-copy"><span class="tag">Ride the waves</span><h3>Surf Culture</h3><p>Feel the energy of Siargao's surf scene.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages-section" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Choose your adventure</span>
+          <h2>Find your kind of island day.</h2>
+          <p>Pick a sample package and send us an inquiry. Prices below are proposed school-project rates and should be confirmed before any real booking.</p>
+        </div>
+        <div class="package-grid">
+          <article class="package-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85" alt="Tropical island hopping scenery">
+            <div class="package-body">
+              <div class="package-meta"><span>🏝️ DAY TOUR</span><span>Approx. 6–8 hours</span></div>
+              <h3>Three-Island Adventure</h3>
+              <p>Spend a sun-filled day exploring the beautiful island-hopping spots around Siargao.</p>
+              <ul><li>Sample route: Guyam, Daku & Naked Islands</li><li>Boat tour and local guide</li><li>Lunch, subject to confirmation</li></ul>
+              <div class="price-row"><span class="price">₱1,500</span><small>/ person</small></div>
+              <button class="btn btn-primary choose-package" data-package="Three-Island Adventure">Choose this tour →</button>
+            </div>
+          </article>
+          <article class="package-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=85" alt="Peaceful tropical beach">
+            <div class="package-body">
+              <div class="package-meta"><span>🌿 NATURE TOUR</span><span>Approx. 5–7 hours</span></div>
+              <h3>Lagoon Escape</h3>
+              <p>Discover calm waters and lush surroundings on a nature-focused island excursion.</p>
+              <ul><li>Suggested visit: Sugba Lagoon</li><li>Guided excursion and boat transfer</li><li>Activities and fees to be confirmed</li></ul>
+              <div class="price-row"><span class="price">₱1,800</span><small>/ person</small></div>
+              <button class="btn btn-primary choose-package" data-package="Lagoon Escape">Choose this tour →</button>
+            </div>
+          </article>
+          <article class="package-card">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=900&q=85" alt="Surfing in ocean waves">
+            <div class="package-body">
+              <div class="package-meta"><span>🏄 SURF & EXPLORE</span><span>Approx. 3–4 hours</span></div>
+              <h3>Surf & Island Vibes</h3>
+              <p>Get a taste of Siargao's surfing culture and enjoy time around the famous Cloud 9 area.</p>
+              <ul><li>Beginner-friendly surf lesson option</li><li>Instructor and board, subject to availability</li><li>Cloud 9 area visit</li></ul>
+              <div class="price-row"><span class="price">₱1,200</span><small>/ person</small></div>
+              <button class="btn btn-primary choose-package" data-package="Surf & Island Vibes">Choose this tour →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1000&q=85" alt="Beautiful tropical beach with palms and clear water">
+          <div class="photo-stamp">FEEL THE<br>ISLAND SPIRIT<br>☼ SIARGAO</div>
+        </div>
+        <div class="about-copy">
+          <span class="kicker">Our story</span>
+          <h2>More than a destination. A feeling.</h2>
+          <p><strong>Feel and Discover Siargao</strong> is an original tourism business concept created to help travelers experience the natural beauty, adventure, and welcoming island culture of Siargao, Philippines.</p>
+          <p>We imagine journeys that go beyond taking photos: exploring with curiosity, appreciating local communities, and leaving the island with meaningful memories. This project promotes responsible tourism and thoughtful travel planning.</p>
+          <h3>Our Mission</h3>
+          <p>To offer memorable, convenient, and responsible travel experiences while celebrating Siargao's natural resources, culture, and local communities.</p>
+          <h3>Our Vision</h3>
+          <p>To become a trusted island-tour brand known for warm hospitality, enjoyable experiences, and a commitment to sustainable tourism.</p>
+          <div class="values">
+            <div class="value"><span>💚</span><b>Respect Nature</b><span>Help protect the island environment.</span></div>
+            <div class="value"><span>🤝</span><b>Warm Hospitality</b><span>Welcome every traveler with care.</span></div>
+            <div class="value"><span>🌊</span><b>Real Experiences</b><span>Celebrate local places and culture.</span></div>
+            <div class="value"><span>✨</span><b>Guest First</b><span>Make every trip thoughtful and enjoyable.</span></div>
+          </div>
+          <p><strong>Our target market:</strong> Local and international tourists, students, couples, families, and adventure seekers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="container booking-grid">
+        <div>
+          <span class="eyebrow">Your next story starts here</span>
+          <h2>Let's plan your island escape.</h2>
+          <p class="muted">Tell us what you're dreaming of and send a reservation inquiry. This demo form will prepare an email request; it does not automatically confirm a booking.</p>
+          <ul class="booking-points">
+            <li><span>✓</span> Choose the tour that suits you</li>
+            <li><span>✓</span> Tell us your preferred date and group size</li>
+            <li><span>✓</span> Receive a clear inquiry summary before sending</li>
+          </ul>
+          <p style="color:#b9d8d2;font-size:.88rem">For this student demo, inquiries open in your device's email app. Connect a form service before accepting real customer bookings.</p>
+        </div>
+        <form class="booking-form" id="bookingForm">
+          <h3>Reservation Inquiry</h3>
+          <p>Fill out the details below to prepare your tour request.</p>
+          <div class="form-grid">
+            <div class="field"><label for="fullName">Full name *</label><input id="fullName" name="fullName" autocomplete="name" required placeholder="Your full name"></div>
+            <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+            <div class="field"><label for="tour">Select a package *</label><select id="tour" name="tour" required><option value="">Choose a tour</option><option>Three-Island Adventure</option><option>Lagoon Escape</option><option>Surf & Island Vibes</option><option>Custom Island Experience</option></select></div>
+            <div class="field"><label for="guests">Number of guests *</label><select id="guests" name="guests" required><option value="">Choose guests</option><option>1 guest</option><option>2 guests</option><option>3–5 guests</option><option>6–10 guests</option><option>11+ guests</option></select></div>
+            <div class="field"><label for="date">Preferred date *</label><input id="date" name="date" type="date" required></div>
+            <div class="field"><label for="contactMethod">Preferred contact</label><select id="contactMethod" name="contactMethod"><option>Email</option><option>Phone</option></select></div>
+            <div class="field full"><label for="requests">Special requests</label><textarea id="requests" name="requests" placeholder="Tell us about your plans or questions (optional)"></textarea></div>
+            <div class="field full"><button class="btn btn-coral" type="submit">Prepare My Inquiry ↗</button><p class="form-note">* Required fields. Your booking is not confirmed until details, availability, and pricing are verified.</p><div class="form-status" id="formStatus" role="status"></div></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="kicker">Say hello</span>
+          <h2>Questions? We're happy to help.</h2>
+          <p class="muted">Planning your first island trip or looking for a custom itinerary? Send us a message using the sample contact details below.</p>
+          <div class="contact-cards">
+            <div class="contact-card"><span class="emoji">📍</span><div><b>Our destination</b><span>General Luna, Siargao Island, Surigao del Norte, Philippines</span></div></div>
+            <div class="contact-card"><span class="emoji">✉️</span><div><b>Email</b><a href="mailto:hello@feeldiscover-siargao.example">hello@feeldiscover-siargao.example</a><span style="display:block">Sample email for school project; replace with your real contact.</span></div></div>
+            <div class="contact-card"><span class="emoji">🕘</span><div><b>Inquiry hours</b><span>Monday–Saturday · 8:00 AM–5:00 PM (Philippine time)</span></div></div>
+            <div class="contact-card"><span class="emoji">💬</span><div><b>Social media</b><span>Sample brand page — create your official account and add its real URL before publishing.</span></div></div>
+          </div>
+        </div>
+        <div class="map-panel">
+          <iframe title="Map of General Luna, Siargao" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=General%20Luna%2C%20Siargao%2C%20Philippines&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container faq-grid">
+        <div class="section-head">
+          <span class="kicker">Good to know</span>
+          <h2>Frequently asked questions.</h2>
+          <p>Quick answers to help you prepare for your Siargao adventure.</p>
+          <a class="btn btn-primary" href="#booking">Ask about a tour →</a>
+        </div>
+        <div>
+          <details><summary>How do I reserve a tour?</summary><p>Complete the inquiry form above. In this demo, your email app opens with a prepared message. A real reservation needs a working business email or connected form service and confirmation from the operator.</p></details>
+          <details><summary>Are the prices final?</summary><p>No. The displayed prices are sample rates for this student website project. Actual prices, fees, transport, meals, and availability must be confirmed before booking.</p></details>
+          <details><summary>What should I bring?</summary><p>Bring sun protection, swimwear, a towel, drinking water in a reusable bottle, and a waterproof bag. Check local weather and tour conditions before departure.</p></details>
+          <details><summary>Can you arrange a custom trip?</summary><p>Choose “Custom Island Experience” in the inquiry form and describe your interests, preferred date, and group size.</p></details>
+          <details><summary>How can I help protect Siargao?</summary><p>Follow local guidelines, avoid leaving litter, respect wildlife and communities, and choose responsible local services where possible.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          <a class="brand" href="#home"><span class="brand-mark">☼</span><span class="brand-name">FEEL & DISCOVER<small>SIARGAO ISLAND</small></span></a>
+          <p>Feel the Island. Discover the Paradise.</p>
+        </div>
+        <div class="socials">
+          <a href="#contact" aria-label="Find Facebook contact">Facebook · add page</a>
+          <a href="#contact" aria-label="Find Instagram contact">Instagram · add page</a>
+          <a href="#booking">Plan a trip</a>
+        </div>
+      </div>
+      <div class="copyright">© <span id="year"></span> Feel and Discover Siargao · Student tourism website concept for TM 8. Sample prices and contact information are for demonstration only.</div>
+    </div>
+  </footer>
+  <button class="backtop" id="backtop" aria-label="Back to top" title="Back to top">↑</button>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navlinks = document.getElementById('navlinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navlinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    document.querySelectorAll('.choose-package').forEach(button => button.addEventListener('click', () => {
+      document.getElementById('tour').value = button.dataset.package;
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('fullName').focus({ preventScroll: true });
+    }));
+    const dateInput = document.getElementById('date');
+    const localToday = new Date();
+    dateInput.min = new Date(localToday.getTime() - localToday.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    document.getElementById('bookingForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const summary = [
+        'Reservation inquiry — Feel and Discover Siargao',
+        '',
+        `Name: ${data.get('fullName')}`,
+        `Email: ${data.get('email')}`,
+        `Package: ${data.get('tour')}`,
+        `Guests: ${data.get('guests')}`,
+        `Preferred date: ${data.get('date')}`,
+        `Preferred contact: ${data.get('contactMethod')}`,
+        `Special requests: ${data.get('requests') || 'None'}`,
+        '',
+        'Please confirm availability and final pricing. I understand this is an inquiry, not a confirmed reservation.'
+      ].join('\n');
+      const status = document.getElementById('formStatus');
+      status.style.display = 'block';
+      status.textContent = 'Your inquiry details are ready. Your email app will open if one is configured. This is not a confirmed booking.';
+      const mailto = 'mailto:hello@feeldiscover-siargao.example?subject=' +
+        encodeURIComponent('Tour Reservation Inquiry - Feel and Discover Siargao') +
+        '&body=' + encodeURIComponent(summary);
+      window.location.href = mailto;
+      const copyButton = document.createElement('button');
+      copyButton.type = 'button';
+      copyButton.className = 'btn btn-outline';
+      copyButton.style.marginTop = '10px';
+      copyButton.textContent = 'Copy inquiry details';
+      copyButton.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(summary);
+          copyButton.textContent = 'Copied!';
+        } catch {
+          const textArea = document.createElement('textarea');
+          textArea.value = summary;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          textArea.remove();
+          copyButton.textContent = 'Copied!';
+        }
+      });
+      status.appendChild(document.createElement('br'));
+      status.appendChild(copyButton);
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('backtop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
